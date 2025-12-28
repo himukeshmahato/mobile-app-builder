@@ -25,6 +25,9 @@ requirements = python3,kivy,android,pyjnius
 # (list) Permissions
 android.permissions = INTERNET
 
+# (list) architectures to build for, choices: armeabi-v7a, arm64-v8a, x86, x86_64
+android.archs = armeabi-v7a
+
 # (int) Target Android API, should be as high as possible (mostly)
 android.api = 31
 
@@ -53,7 +56,7 @@ android.entrypoint = org.kivy.android.PythonActivity
 [buildozer]
 
 # (int) Log level (0 = error only, 1 = info, 2 = debug (with command output))
-log_level = 2
+log_level = 1
 
 # (int) Display warning if buildozer is run as root (0 = False, 1 = True)
 warn_on_root = 1

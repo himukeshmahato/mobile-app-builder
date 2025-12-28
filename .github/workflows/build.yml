@@ -13,22 +13,11 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Set up Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: '3.11'
-
-      - name: Install dependencies
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y libltdl-dev libffi-dev libssl-dev
-
       - name: Build with Buildozer
-        uses: ArtemSBulgakov/buildozer-action@v1
+        uses: kivy/buildozer-action@v1
         id: buildozer
         with:
           workdir: android_build
-          buildozer_version: master
 
       - name: Upload APK
         uses: actions/upload-artifact@v4
