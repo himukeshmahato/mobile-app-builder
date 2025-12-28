@@ -1,0 +1,46 @@
+HOW TO GENERATE YOUR APK FILE
+
+Because you are on Windows, you cannot run 'buildozer' natively.
+Use this free Google Colab script to compile the APK for you.
+
+1. Open a new notebook at: https://colab.research.google.com/
+2. Paste the following code into the first cell and run it (Shift+Enter).
+3. It will ask you to upload files. Upload the 'main.py' and 'buildozer.spec' files found in the 'android_build' folder I created.
+4. Wait about 10-15 minutes for the compilation.
+5. The cell will trigger a download of your 'ColabMobile-0.1-debug.apk'.
+
+---
+
+COPY CODE BELOW THIS LINE
+
+!pip install buildozer cython
+!sudo apt-get install -y \
+    python3-pip \
+    build-essential \
+    git \
+    python3 \
+    python3-dev \
+    ffmpeg \
+    libsdl2-dev \
+    libsdl2-image-dev \
+    libsdl2-mixer-dev \
+    libsdl2-ttf-dev \
+    libportmidi-dev \
+    libswscale-dev \
+    libavformat-dev \
+    libavcodec-dev \
+    zlib1g-dev
+
+!yes | buildozer android debug
+
+from google.colab import files
+import glob
+apk_files = glob.glob("bin/*.apk")
+if apk_files:
+    files.download(apk_files[0])
+else:
+    print("No APK found in bin/ directory. Check logs for errors.")
+
+---
+
+END CODE ---
